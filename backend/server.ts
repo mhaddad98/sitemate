@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import cors from "cors";
 import "express-async-errors";
 
 dotenv.config();
@@ -24,6 +25,7 @@ export const issues: Issue[] = [
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/issues", issuesRouter());
